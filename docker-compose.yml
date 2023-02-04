@@ -1,7 +1,7 @@
 version: "3.2"
 
 services:
-  living_api:
+  menu_api:
     build:
       context: .
       dockerfile: ./Dockerfile
