@@ -26,8 +26,8 @@ class MenuService:
                     if food:
                         food_filters.append(food(value))
                     topping = FILTER_CRITERIA_TOPPING_MAP.get(filter_model)
-                    if topping:
-                        topping_filters.append(topping([value]))
+                    if topping and isinstance(value, list):
+                        topping_filters.append(topping(value))
 
         food_filters.append(FILTER_CRITERIA_FOOD_MAP.get("is_publish")(True))
         return await self.repo.get_dishes(food_filters, topping_filters)

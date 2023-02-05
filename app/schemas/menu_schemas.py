@@ -53,4 +53,4 @@ class MenuFilterParams(BaseSchema):
 
     is_vegan: bool | None = None
     is_special: bool | None = None
-    topping_name: str | None = None
+    topping_name: List[str] | None = None
