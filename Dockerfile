@@ -23,6 +23,4 @@ RUN apt-get update  \
 
 COPY . .
 
-
-
-ENTRYPOINT bash -c "uvicorn app.instances:app --host 0.0.0.0 --port 8000 --reload"
+ENTRYPOINT bash -c "alembic init alembic && alembic upgrade head && uvicorn app.instances:app --host 0.0.0.0 --port 8000 --reload"

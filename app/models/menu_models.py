@@ -8,6 +8,7 @@ class Food(BaseModel):
     """  Блюдо """
 
     __tablename__ = 'food'
+    __table_args__ = {"extend_existing": True}
 
     descriptions = Column(String)
     price = Column(Integer)
@@ -24,12 +25,14 @@ class Topping(BaseModel):
     """Ингредиенты"""
 
     __tablename__ = 'toppings'
+    __table_args__ = {"extend_existing": True}
 
 
 class FoodCategory(BaseModel):
     """Категория Блюд"""
 
     __tablename__ = 'food_categories'
+    __table_args__ = {"extend_existing": True}
 
     is_publish = Column(Boolean)
 

@@ -72,4 +72,5 @@ def get_db_session_dependence(settings, debug: bool = False):
 
 
 get_async_session = get_db_session_dependence(db_settings, server_settings.debug)
+async_session = _get_async_session(db_settings, server_settings.debug)
 
