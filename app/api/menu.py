@@ -9,7 +9,7 @@ topping_api = APIRouter()
 
 
 @topping_api.post('', response_model=List[FoodCategorySchema])
-async def get_dishes(filter_params: MenuFilterParams = Body(..., embed=False),
+async def get_dishes(filter_params: MenuFilterParams | None = Body(..., embed=False),
                      service: MenuService = Depends()):
     """" Возвращает блюда """
 

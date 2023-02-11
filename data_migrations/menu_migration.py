@@ -1,8 +1,14 @@
 import asyncio
+import os
 import random
+import sys
 
 from sqlalchemy import insert, select
 from sqlalchemy.orm import selectinload
+
+current_path = os.path.dirname(os.path.abspath(__file__))
+ROOT_PATH = os.path.join(current_path, '..')
+sys.path.append(ROOT_PATH)
 
 from app.database import async_session
 from app.models.menu_models import Food, FoodCategory, Topping

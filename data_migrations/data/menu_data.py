@@ -36,11 +36,11 @@ foods = [
         "price": 400,
         "is_special": True,
         "is_vegan": True,
-        "is_publish": True,
+        "is_publish": False,
     },
 ]
 
 food_categories = [
-    {"name": "Осеннее меню", "is_publish": True,},
-    {"name": "Летнее меню", "is_publish": True,},
+    {"name": "Осеннее меню", "is_publish": True},
+    {"name": "Летнее меню", "is_publish": True},
 ]

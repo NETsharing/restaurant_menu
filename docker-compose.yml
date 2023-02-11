@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.8"
 
 services:
   menu_api:
@@ -6,12 +6,14 @@ services:
       context: .
       dockerfile: ./Dockerfile
     container_name: menu_api
-    image: menu_api:${VERSION:-latest}
     restart: always
     volumes:
       - .:/app
     ports:
       - ${APP_EXPOSED_PORT}:8000
+    command: >
+      sh -c " alembic upgrade head &&
+             python3 data_migrations/menu_migration.py
     env_file:
       - .env
     networks:
@@ -22,9 +24,9 @@ services:
     image: postgres:14-alpine
     restart: on-failure
     environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
     ports:
       - ${DB_PORT}:5432
     volumes:
