@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - ${APP_EXPOSED_PORT}:8000
+      - 8000:8000
     command: >
       sh -c " alembic upgrade head &&
              python3 data_migrations/menu_migration.py
