@@ -12,12 +12,11 @@ services:
     ports:
       - 8000:8000
     command: >
-      sh -c " alembic upgrade head &&
-             python3 data_migrations/menu_migration.py
-    env_file:
-      - .env
+      sh -c "alembic upgrade head &&
+              uvicorn app.instances:app --host 0.0.0.0 &&
+              python3 data_migrations/menu_migration.py"
     networks:
-      - menu_net
+      - custom
     depends_on:
       - db
   db:
@@ -28,11 +27,16 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
     ports:
-      - ${DB_PORT}:5432
+      - 5432:5432
     volumes:
-      - ../2. Init Database:/docker-entrypoint-initdb.d
-      - .:/var/lib/postgresql/data
+      - pg:/var/lib/postgresql
+    networks:
+      - custom
 
 volumes:
   pg:
     driver: local
+
+networks:
+  custom:
+    driver: bridge
