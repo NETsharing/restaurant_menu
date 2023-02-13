@@ -19,8 +19,8 @@ class BaseSettings(PyBaseSettings):
 
 
 class ServerSettings(BaseSettings):
-    server_host: str = "127.0.0.1"
-    server_port: PositiveInt = 8015
+    server_host: str = "0.0.0.0"
+    server_port: PositiveInt = 8000
     debug: bool = 0  # 1 to work with echo
 
 
@@ -28,8 +28,8 @@ class DatabaseSettings(BaseSettings):
     dialect: str = "postgresql"
     db_user: str = "postgres"
     db_pass: str = "postgres"
-    db_host: str = "127.0.0.1"
-    db_port: str = 5432
+    db_host: str = "0.0.0.0"
+    db_port: str = 5434
     db_name: str = "menu"
 
     db_pool_min_size: PositiveInt = 10

@@ -19,6 +19,10 @@ async def create_test_data():
     """Creates test params"""
 
     async with async_session() as session:
+        food_category_query = await session.execute(select(FoodCategory))
+        result = food_category_query.scalars().first()
+        if result:
+            return
         await session.execute(insert(FoodCategory).values(food_categories))
         await session.execute(insert(Food).values(foods))
         await session.execute(insert(Topping).values(toppings))

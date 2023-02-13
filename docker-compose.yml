@@ -27,7 +27,7 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
     ports:
-      - 5432:5432
+      - 5434:5432
     volumes:
       - pg:/var/lib/postgresql
     networks:
